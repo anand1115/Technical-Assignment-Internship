@@ -5,8 +5,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,PermissionsMixin,BaseUserManager
 from django.utils.translation import ugettext_lazy as _
-
-
 class MyUserManager(BaseUserManager):
     def create_user(self,full_name,phonenumber,email,password=None,admin=False,active=False):
         if not full_name:
@@ -31,7 +29,6 @@ class MyUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
 class User(AbstractBaseUser,PermissionsMixin):
     full_name=models.CharField(max_length=255,verbose_name="Full Name")
     email=models.EmailField(unique=True,max_length=255,verbose_name="Email")
@@ -39,7 +36,6 @@ class User(AbstractBaseUser,PermissionsMixin):
     admin=models.BooleanField(default=False)
     active=models.BooleanField(default=False)
     date_joined=models.DateTimeField(auto_now_add=True)
-  
 
     USERNAME_FIELD='email'
     REQUIRED_FIELDS=['full_name','phonenumber']
