@@ -4,7 +4,7 @@ from .views import *
 app_name="myapp"
 
 urlpatterns=[
-	path("",MyView.as_view(),name="Home"),
+	path("api/v1/calculate/",MyView.as_view(),name="Home"),
 	path('login/',LoginView.as_view(),name="login"),
     path('signup/',SignupView.as_view(),name="signup"),
     path('logout/',LogoutView.as_view(),name="logout"),
